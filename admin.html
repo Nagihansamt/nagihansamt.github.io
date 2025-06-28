@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Portfolio Yönetimi</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Login Screen -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-container">
+      <div class="login-header">
+        <h2><i class="fas fa-lock"></i> Admin Girişi</h2>
+        <p>Portfolio yönetim paneline erişim</p>
+      </div>
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="username">Kullanıcı Adı</label>
+          <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Şifre</label>
+          <input type="password" id="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Giriş Yap</button>
+      </form>
+      <div class="login-info">
+        <p><strong>Varsayılan Giriş:</strong></p>
+        <p>Kullanıcı Adı: <code>admin</code></p>
+        <p>Şifre: <code>1234</code></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="adminPanel" class="admin-container" style="display: none;">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-cog"></i> Admin Panel</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item active" data-tab="dashboard">
+            <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+          </li>
+          <li class="nav-item" data-tab="profile">
+            <a href="#profile"><i class="fas fa-user"></i> Profil Bilgileri</a>
+          </li>
+          <li class="nav-item" data-tab="education">
+            <a href="#education"><i class="fas fa-graduation-cap"></i> Eğitim</a>
+          </li>
+          <li class="nav-item" data-tab="experience">
+            <a href="#experience"><i class="fas fa-briefcase"></i> Deneyim</a>
+          </li>
+          <li class="nav-item" data-tab="projects">
+            <a href="#projects"><i class="fas fa-folder"></i> Projeler</a>
+          </li>
+          <li class="nav-item" data-tab="skills">
+            <a href="#skills"><i class="fas fa-chart-bar"></i> Yetenekler</a>
+          </li>
+          <li class="nav-item" data-tab="messages">
+            <a href="#messages"><i class="fas fa-envelope"></i> Mesajlar</a>
+          </li>
+          <li class="nav-item" data-tab="settings">
+            <a href="#settings"><i class="fas fa-cog"></i> Ayarlar</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="header-left">
+          <button class="sidebar-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <h1 id="page-title">Dashboard</h1>
+        </div>
+        <div class="header-right">
+          <div class="admin-user">
+            <img src="cvpp.jpg" alt="Admin" class="admin-avatar">
+            <span class="admin-name">Nagihan Gülen</span>
+            <button class="logout-btn" onclick="logout()">
+              <i class="fas fa-sign-out-alt"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Dashboard Tab -->
+        <div id="dashboard" class="tab-content active">
+          <div class="dashboard-stats">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-eye"></i>
+              </div>
+              <div class="stat-info">
+                <h3>1,234</h3>
+                <p>Toplam Görüntülenme</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="stat-info">
+                <h3>56</h3>
+                <p>Yeni Mesaj</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <div class="stat-info">
+                <h3>5</h3>
+                <p>Aktif Proje</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-info">
+                <h3>4.8</h3>
+                <p>Ortalama Puan</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-content">
+            <div class="recent-messages">
+              <h3>Son Mesajlar</h3>
+              <div class="message-list">
+                <div class="message-item">
+                  <div class="message-avatar">JD</div>
+                  <div class="message-content">
+                    <h4>John Doe</h4>
+                    <p>Projenizle ilgili görüşmek istiyorum...</p>
+                    <span class="message-time">2 saat önce</span>
+                  </div>
+                </div>
+                <div class="message-item">
+                  <div class="message-avatar">JS</div>
+                  <div class="message-content">
+                    <h4>Jane Smith</h4>
+                    <p>Harika bir portfolio! İletişime geçelim...</p>
+                    <span class="message-time">5 saat önce</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="quick-actions">
+              <h3>Hızlı İşlemler</h3>
+              <div class="action-buttons">
+                <button class="action-btn" onclick="showTab('profile')">
+                  <i class="fas fa-edit"></i>
+                  Profil Düzenle
+                </button>
+                <button class="action-btn" onclick="showTab('projects')">
+                  <i class="fas fa-plus"></i>
+                  Yeni Proje
+                </button>
+                <button class="action-btn" onclick="showTab('messages')">
+                  <i class="fas fa-reply"></i>
+                  Mesajları Görüntüle
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Tab -->
+        <div id="profile" class="tab-content">
+          <div class="form-container">
+            <h3>Profil Bilgileri</h3>
+            <form id="profile-form" class="admin-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Ad Soyad</label>
+                  <input type="text" id="fullName" value="Nagihan Gülen" required>
+                </div>
+                <div class="form-group">
+                  <label>Ünvan</label>
+                  <input type="text" id="title" value="Full Stack Web Developer & Product Manager" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Hakkımda</label>
+                <textarea id="about" rows="4" required>Yönetim Bilişim Sistemleri öğrencisi olarak, hem teknik hem de yönetsel alanlarda kendimi geliştirmeye odaklandım. Web geliştirme ve yazılım test süreçleri üzerine bireysel projeler gerçekleştirdim.</textarea>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>LinkedIn</label>
+                  <input type="url" id="linkedin" value="https://www.linkedin.com/in/nagihan-g%C3%BClen-492679202/">
+                </div>
+                <div class="form-group">
+                  <label>GitHub</label>
+                  <input type="url" id="github" value="https://github.com/Nagihansamt">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Instagram</label>
+                <input type="url" id="instagram" value="https://www.instagram.com/nagihansamt/">
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+                <button type="button" class="btn btn-secondary">İptal</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Education Tab -->
+        <div id="education" class="tab-content">
+          <div class="tab-header">
+            <h3>Eğitim Bilgileri</h3>
+            <button class="btn btn-primary" onclick="addEducation()">
+              <i class="fas fa-plus"></i> Yeni Eğitim Ekle
+            </button>
+          </div>
+          <div class="education-list" id="educationList">
+            <!-- Education items will be loaded here -->
+          </div>
+        </div>
+
+        <!-- Experience Tab -->
+        <div id="experience" class="tab-content">
+          <div class="tab-header">
+            <h3>Deneyim Bilgileri</h3>
+            <button class="btn btn-primary" onclick="addExperience()">
+              <i class="fas fa-plus"></i> Yeni Deneyim Ekle
+            </button>
+          </div>
+          <div class="experience-list" id="experienceList">
+            <!-- Experience items will be loaded here -->
+          </div>
+        </div>
+
+        <!-- Projects Tab -->
+        <div id="projects" class="tab-content">
+          <div class="tab-header">
+            <h3>Projeler</h3>
+            <button class="btn btn-primary" onclick="addProject()">
+              <i class="fas fa-plus"></i> Yeni Proje Ekle
+            </button>
+          </div>
+          <div class="projects-list" id="projectsList">
+            <!-- Projects will be loaded here -->
+          </div>
+        </div>
+
+        <!-- Skills Tab -->
+        <div id="skills" class="tab-content">
+          <div class="tab-header">
+            <h3>Yetenekler</h3>
+            <button class="btn btn-primary" onclick="addSkill()">
+              <i class="fas fa-plus"></i> Yeni Yetenek Ekle
+            </button>
+          </div>
+          <div class="skills-list" id="skillsList">
+            <!-- Skills will be loaded here -->
+          </div>
+        </div>
+
+        <!-- Messages Tab -->
+        <div id="messages" class="tab-content">
+          <div class="tab-header">
+            <h3>Gelen Mesajlar</h3>
+            <button class="btn btn-secondary" onclick="refreshMessages()">
+              <i class="fas fa-sync"></i> Yenile
+            </button>
+          </div>
+          <div class="messages-list" id="messagesList">
+            <!-- Messages will be loaded here -->
+          </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings" class="tab-content">
+          <div class="form-container">
+            <h3>Site Ayarları</h3>
+            <form id="settings-form" class="admin-form">
+              <div class="form-group">
+                <label>Site Başlığı</label>
+                <input type="text" id="siteTitle" value="Nagihan Gülen - Portfolio">
+              </div>
+              <div class="form-group">
+                <label>Site Açıklaması</label>
+                <textarea id="siteDescription" rows="3">Full Stack Web Developer ve Product Manager Portfolio Sitesi</textarea>
+              </div>
+              <div class="form-group">
+                <label>Ana Renk</label>
+                <input type="color" id="primaryColor" value="#2563eb">
+              </div>
+              <div class="form-group">
+                <label>İkincil Renk</label>
+                <input type="color" id="secondaryColor" value="#3b82f6">
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Ayarları Kaydet</button>
+                <button type="button" class="btn btn-secondary">Varsayılana Döndür</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modals -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Modal Başlığı</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Modal content will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html> 
